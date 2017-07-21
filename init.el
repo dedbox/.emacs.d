@@ -48,11 +48,13 @@
   :diminish ""
   :config
   (progn
-    (add-hook 'emacs-lisp-mode-hook                  #'enable-paredit-mode)
-    (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-    (add-hook 'ielm-mode-hook                        #'enable-paredit-mode)
-    (add-hook 'lisp-mode-hook                        #'enable-paredit-mode)
-    (add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)))
+    (mapc (lambda (hook) (add-hook hook #'enable-paredit-mode))
+          '(emacs-lisp-mode-hook
+            eval-expression-minibuffer-setup-hook
+            ielm-mode-hook
+            lisp-mode-hook
+            lisp-interaction-mode-hook
+            scheme-mode-hook))))
 
 ;; Git
 (use-package magit :ensure t :defer 2)
@@ -95,8 +97,7 @@
          ("C-c X" . "Ξ") ("C-c S" . "Σ")
          ("C-c F" . "Φ") ("C-c O" . "Ω")
          ("C-c E" . "∃") ("C-c A" . "∀"))
-  :config (progn (add-hook 'scheme-mode-hook      #'enable-paredit-mode)
-                 (add-hook 'geiser-repl-mode-hook #'enable-paredit-mode)
+  :config (progn (add-hook 'geiser-repl-mode-hook #'enable-paredit-mode)
                  (mapc (lambda (x)
                          (put (car x) 'scheme-indent-function (cdr x)))
                        '((forever . 0)))))
