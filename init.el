@@ -45,14 +45,14 @@
 
 ;; Parentheses
 (use-package paredit
+  :diminish ""
   :config
   (progn
     (add-hook 'emacs-lisp-mode-hook                  #'enable-paredit-mode)
     (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
     (add-hook 'ielm-mode-hook                        #'enable-paredit-mode)
     (add-hook 'lisp-mode-hook                        #'enable-paredit-mode)
-    (add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)
-    (add-hook 'scheme-mode-hook                      #'enable-paredit-mode)))
+    (add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)))
 
 ;; Git
 (use-package magit :ensure t :defer 2)
@@ -77,8 +77,27 @@
          ("C-c f" . "φ") ("C-c F" . "Φ")
          ("C-c X" . "Ξ") ("C-c S" . "Σ")
          ("C-c F" . "Φ") ("C-c O" . "Ω")
+         ("C-c E" . "∃") ("C-c A" . "∀")
+         :map geiser-repl-mode-map
+         ("C-c a" . "α")
+         ("C-c b" . "β")
+         ("C-c g" . "γ") ("C-c Y" . "Θ")
+         ("C-c d" . "δ") ("C-c D" . "Δ")
+         ("C-c e" . "ε")
+         ("C-c z" . "ζ")
+         ("C-c y" . "θ")
+         ("C-c l" . "λ") ("C-c L" . "Λ")
+         ("C-c m" . "μ")
+         ("C-c x" . "ξ")
+         ("C-c p" . "π") ("C-c P" . "Π")
+         ("C-c r" . "ρ")
+         ("C-c f" . "φ") ("C-c F" . "Φ")
+         ("C-c X" . "Ξ") ("C-c S" . "Σ")
+         ("C-c F" . "Φ") ("C-c O" . "Ω")
          ("C-c E" . "∃") ("C-c A" . "∀"))
-  :config (progn (mapc (lambda (x)
+  :config (progn (add-hook 'scheme-mode-hook      #'enable-paredit-mode)
+                 (add-hook 'geiser-repl-mode-hook #'enable-paredit-mode)
+                 (mapc (lambda (x)
                          (put (car x) 'scheme-indent-function (cdr x)))
                        '((forever . 0)))))
 
