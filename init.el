@@ -45,7 +45,7 @@
   :config (progn (add-hook 'text-mode-hook 'flyspell-mode)))
 
 ;; Code
-(use-package flycheck :ensure t)
+(use-package flycheck :ensure t :diminish "")
 
 ;; Parentheses
 (use-package paredit
