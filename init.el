@@ -98,9 +98,14 @@
          ("C-c X" . "Ξ") ("C-c S" . "Σ")
          ("C-c F" . "Φ") ("C-c O" . "Ω")
          ("C-c E" . "∃") ("C-c A" . "∀"))
-  :config (progn (mapc (lambda (x)
-                         (put (car x) 'scheme-indent-function (cdr x)))
-                       '((forever . 0)))))
+  :config
+  (progn
+    (mapc (lambda (x)
+            (put (car x) 'scheme-indent-function (cdr x)))
+          '((let/cc . 1)
+            (struct . 2)
+            ;; my functions
+            (-struct . 2)))))
 
 ;; Latex
 (use-package auctex
