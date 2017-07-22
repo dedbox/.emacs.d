@@ -94,7 +94,13 @@
           '((let/cc . 1)
             (struct . 2)
             ;; my functions
-            (-struct . 2)))))
+            (-struct . 2)))
+
+    (mapc (lambda (f)
+            (setq hippie-expand-try-functions-list
+                  (remq f hippie-expand-try-functions-list)))
+          '(try-expand-line
+            try-expand-list))))
 
 ;; Latex
 (use-package auctex
