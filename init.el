@@ -54,7 +54,8 @@
             ielm-mode-hook
             lisp-mode-hook
             lisp-interaction-mode-hook
-            scheme-mode-hook))))
+            scheme-mode-hook
+            geiser-repl-mode-hook))))
 
 ;; Git
 (use-package magit :ensure t :defer 2)
@@ -97,8 +98,7 @@
          ("C-c X" . "Ξ") ("C-c S" . "Σ")
          ("C-c F" . "Φ") ("C-c O" . "Ω")
          ("C-c E" . "∃") ("C-c A" . "∀"))
-  :config (progn (add-hook 'geiser-repl-mode-hook #'enable-paredit-mode)
-                 (mapc (lambda (x)
+  :config (progn (mapc (lambda (x)
                          (put (car x) 'scheme-indent-function (cdr x)))
                        '((forever . 0)))))
 
