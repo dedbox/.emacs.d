@@ -40,7 +40,9 @@
   (global-unset-key [(control x) (control z)]))
 
 ;; Text
-(use-package flyspell :ensure t)
+(use-package flyspell
+  :ensure t
+  :config (progn (add-hook 'text-mode-hook 'flyspell-mode)))
 
 ;; Code
 (use-package flycheck :ensure t)
