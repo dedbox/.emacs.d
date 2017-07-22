@@ -63,7 +63,9 @@
 (use-package magit :ensure t :defer 2)
 
 ;; Racket
-(use-package quack :ensure t)
+(use-package quack
+  :ensure t
+  :config (progn (setq quack-remap-find-file-bindings-p nil)))
 
 (defun bind-greek-keys ()
   (mapc (lambda (x) (bind-key (car x) (cdr x)))
@@ -149,7 +151,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
+    (ido-hacks latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
  '(quack-programs
    (quote
     ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi"))))
