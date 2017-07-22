@@ -63,31 +63,32 @@
 ;; Racket
 (use-package quack :ensure t)
 
+(defun bind-greek-keys ()
+  (mapc (lambda (x) (bind-key (car x) (cdr x)))
+        '(("C-c a" . "α")
+          ("C-c b" . "β")
+          ("C-c g" . "γ") ("C-c Y" . "Θ")
+          ("C-c d" . "δ") ("C-c D" . "Δ")
+          ("C-c e" . "ε")
+          ("C-c z" . "ζ")
+          ("C-c y" . "θ")
+          ("C-c l" . "λ") ("C-c L" . "Λ")
+          ("C-c m" . "μ")
+          ("C-c x" . "ξ")
+          ("C-c p" . "π") ("C-c P" . "Π")
+          ("C-c r" . "ρ")
+          ("C-c f" . "φ") ("C-c F" . "Φ")
+          ("C-c X" . "Ξ") ("C-c S" . "Σ")
+          ("C-c F" . "Φ") ("C-c O" . "Ω")
+          ("C-c E" . "∃") ("C-c A" . "∀")
+          ("C-k" . paredit-kill))))
+
 (use-package geiser
   :ensure t
   :config
   (progn
-    (let ((my-keys '(("C-c a" . "α")
-                     ("C-c b" . "β")
-                     ("C-c g" . "γ") ("C-c Y" . "Θ")
-                     ("C-c d" . "δ") ("C-c D" . "Δ")
-                     ("C-c e" . "ε")
-                     ("C-c z" . "ζ")
-                     ("C-c y" . "θ")
-                     ("C-c l" . "λ") ("C-c L" . "Λ")
-                     ("C-c m" . "μ")
-                     ("C-c x" . "ξ")
-                     ("C-c p" . "π") ("C-c P" . "Π")
-                     ("C-c r" . "ρ")
-                     ("C-c f" . "φ") ("C-c F" . "Φ")
-                     ("C-c X" . "Ξ") ("C-c S" . "Σ")
-                     ("C-c F" . "Φ") ("C-c O" . "Ω")
-                     ("C-c E" . "∃") ("C-c A" . "∀")
-                     ("C-k" . paredit-kill))))
-      (mapc (lambda (x)
-              (bind-key (car x) (cdr x))
-              (bind-key (car x) (cdr x) geiser-mode-map))
-            my-keys))
+    (bind-greek-keys)
+    (add-hook 'geiser-repl-mode 'bind-greek-keys)
 
     (mapc (lambda (x)
             (put (car x) 'scheme-indent-function (cdr x)))
@@ -146,7 +147,10 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package))))
+    (latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
+ '(quack-programs
+   (quote
+    ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
