@@ -65,6 +65,7 @@
 (use-package magit :ensure t :defer 2)
 
 ;; Racket
+(add-hook 'scheme-mode-hook 'flycheck-mode)
 (use-package quack
   :ensure t
   :config (progn (setq quack-remap-find-file-bindings-p nil)))
