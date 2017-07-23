@@ -66,6 +66,8 @@
 
 ;; Racket
 (add-hook 'scheme-mode-hook 'flycheck-mode)
+(add-hook 'geiser-repl-mode-hook 'bind-greek-keys)
+
 (use-package quack
   :ensure t
   :config (progn (setq quack-remap-find-file-bindings-p nil)))
