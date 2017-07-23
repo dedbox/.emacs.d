@@ -17,6 +17,11 @@
 ;; Emacs
 (use-package better-defaults :ensure t)
 (use-package ido-hacks :ensure t)
+(use-package smex
+  :ensure t
+  :bind (("M-x" . smex)
+         ("M-X" . smex-major-mode-commands))
+  :config (smex-initialize))
 
 (setq inhibit-startup-screen t)
 (setq column-number-mode t)
