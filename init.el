@@ -67,7 +67,7 @@
             geiser-repl-mode-hook))))
 
 ;; Git
-(use-package magit :ensure t :defer 2)
+(use-package magit :ensure t)
 
 ;; Racket
 (add-hook 'scheme-mode-hook 'flycheck-mode)
