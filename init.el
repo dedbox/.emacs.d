@@ -66,6 +66,16 @@
             scheme-mode-hook
             geiser-repl-mode-hook))))
 
+;; Templates
+(use-package yasnippet
+  :ensure t
+  :diminish yas-minor-mode
+  :config
+  (progn
+    (yas-reload-all)
+    (add-hook 'prog-mode-hook 'yas-minor-mode)
+    (add-hook 'snippet-mode-hook 'flyspell-mode-off)))
+
 ;; Git
 (use-package magit :ensure t)
 
@@ -161,7 +171,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ido-hacks latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
+    (smex ido-hacks latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
  '(quack-programs
    (quote
     ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi"))))
