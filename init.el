@@ -117,9 +117,12 @@
     (mapc (lambda (x)
             (put (car x) 'scheme-indent-function (cdr x)))
           '((let/cc . 1)
+            (shift . 1)
             (struct . 2)
             ;; my functions
-            (-struct . 2)))
+            (forever . 0)
+            (syscall . 0)
+            (with-process . 1)))
 
     (mapc (lambda (f)
             (setq hippie-expand-try-functions-list
