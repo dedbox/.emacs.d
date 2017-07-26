@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: λ-form
+# key: λ
+# --
+(λ ($1)$0)
