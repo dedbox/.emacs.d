@@ -74,6 +74,7 @@
   (progn
     (yas-reload-all)
     (add-hook 'prog-mode-hook 'yas-minor-mode)
+    (add-hook 'geiser-repl-mode-hook 'yas-minor-mode)
     (add-hook 'snippet-mode-hook 'flyspell-mode-off)))
 
 ;; Git
