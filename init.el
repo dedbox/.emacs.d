@@ -11,7 +11,7 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-(require 'diminish)
+;; (require 'diminish)
 (require 'bind-key)
 
 ;; Emacs
@@ -50,11 +50,10 @@
   :config (progn (add-hook 'text-mode-hook 'flyspell-mode)))
 
 ;; Code
-(use-package flycheck :ensure t :diminish "")
+(use-package flycheck :ensure t)
 
 ;; Parentheses
 (use-package paredit
-  :diminish ""
   :config
   (progn
     (mapc (lambda (hook) (add-hook hook #'enable-paredit-mode))
@@ -69,7 +68,6 @@
 ;; Templates
 (use-package yasnippet
   :ensure t
-  :diminish yas-minor-mode
   :config
   (progn
     (yas-reload-all)
