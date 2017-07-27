@@ -54,16 +54,11 @@
 
 ;; Parentheses
 (use-package paredit
-  :config
-  (progn
-    (mapc (lambda (hook) (add-hook hook #'enable-paredit-mode))
-          '(emacs-lisp-mode-hook
-            eval-expression-minibuffer-setup-hook
-            ielm-mode-hook
-            lisp-mode-hook
-            lisp-interaction-mode-hook
-            scheme-mode-hook
-            geiser-repl-mode-hook))))
+  :config (mapc (lambda (hook) (add-hook hook #'enable-paredit-mode))
+                '(prog-mode-hook
+                  eval-expression-minibuffer-setup-hook
+                  scheme-mode-hook
+                  geiser-repl-mode-hook)))
 
 ;; Templates
 (use-package yasnippet
@@ -84,7 +79,7 @@
 
 (use-package quack
   :ensure t
-  :config (progn (setq quack-remap-find-file-bindings-p nil)))
+  :config (setq quack-remap-find-file-bindings-p nil))
 
 (defun bind-greek-keys ()
   (mapc (lambda (x) (bind-key (car x) (cdr x)))
@@ -109,45 +104,46 @@
 
 (use-package geiser
   :ensure t
-  :config
-  (progn
-    (bind-greek-keys)
-    (add-hook 'geiser-repl-mode 'bind-greek-keys)
+  :config (progn
+            (bind-greek-keys)
+            (add-hook 'geiser-repl-mode 'bind-greek-keys)
 
-    (mapc (lambda (x)
-            (put (car x) 'scheme-indent-function (cdr x)))
-          '((let/cc . 1)
-            (shift . 1)
-            (struct . 2)
-            ;; my functions
-            (forever . 0)
-            (syscall . 0)
-            (with-process . 1)))
+            (mapc (lambda (x)
+                    (put (car x) 'scheme-indent-function (cdr x)))
+                  '((let/cc . 1)
+                    (shift . 1)
+                    (struct . 2)
+                    ;; my functions
+                    (forever . 0)
+                    (syscall . 0)
+                    (with-process . 1)))
 
-    (mapc (lambda (f)
-            (setq hippie-expand-try-functions-list
-                  (remq f hippie-expand-try-functions-list)))
-          '(try-expand-line
-            try-expand-list))))
+            (mapc (lambda (f)
+                    (setq hippie-expand-try-functions-list
+                          (remq f hippie-expand-try-functions-list)))
+                  '(try-expand-line
+                    try-expand-list))))
 
 ;; Latex
 (use-package auctex
   :ensure t
   :mode ("\\.tex\\'" . latex-mode)
-  :config (progn (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
-                 (setq TeX-auto-save t)
-                 (setq TeX-parse-self t)
-                 (add-to-list 'TeX-view-program-list
-                              '(preview-pane-mode latex-preview-pane-mode))
-                 (setq-default TeX-master "master")))
+  :config (progn
+            (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
+            (setq TeX-auto-save t)
+            (setq TeX-parse-self t)
+            (add-to-list 'TeX-view-program-list
+                         '(preview-pane-mode latex-preview-pane-mode))
+            (setq-default TeX-master "master")))
 
 (use-package reftex
   :ensure t
-  :config (progn (setq reftex-plug-into-AUCTeX t)))
+  :config (setq reftex-plug-into-AUCTeX t))
 
 (use-package bibtex
-  :config (progn (setq bibtex-align-at-equal-sign t)
-                 (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
+  :config (progn
+            (setq bibtex-align-at-equal-sign t)
+            (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
 
 (use-package latex-preview-pane :ensure t)
 
@@ -156,13 +152,14 @@
   :ensure t
   :defer 2
   :init (progn (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
-  :config (progn (when (require 'flycheck nil t)
-                   (remove-hook 'elpy-modules 'elpy-module-flymake)
-                   (remove-hook 'elpy-modules 'elpy-module-yasnippet)
-                   (remove-hook 'elpy-mode-hook 'elpy-module-highlight-indentation)
-                   (add-hook 'elpy-mode-hook 'flycheck-mode))
-                 (elpy-enable)
-                 (setq elpy-rpc-backend "jedi")))
+  :config (progn
+            (when (require 'flycheck nil t)
+              (remove-hook 'elpy-modules 'elpy-module-flymake)
+              (remove-hook 'elpy-modules 'elpy-module-yasnippet)
+              (remove-hook 'elpy-mode-hook 'elpy-module-highlight-indentation)
+              (add-hook 'elpy-mode-hook 'flycheck-mode))
+            (elpy-enable)
+            (setq elpy-rpc-backend "jedi")))
 
 (use-package py-autopep8 :ensure t)
 
