@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: unit-test-submodule
+# key: unit
+# --
+;;; Unit Tests
+
+(module+ test
+  (require rackunit)
+
+  $0
+  )
