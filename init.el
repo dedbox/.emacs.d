@@ -110,10 +110,14 @@
 
             (mapc (lambda (x)
                     (put (car x) 'scheme-indent-function (cdr x)))
-                  '((let/cc . 1)
+                  '((choice-evt . 0)
+                    (handle-evt . 1)
+                    (let/cc . 1)
+                    (replace-evt . 1)
                     (shift . 1)
                     (struct . 2)
                     ;; my functions
+                    (-struct . 2)
                     (forever . 0)
                     (syscall . 0)
                     (with-process . 1)))
