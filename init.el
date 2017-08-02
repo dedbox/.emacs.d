@@ -47,7 +47,7 @@
 ;; Text
 (use-package flyspell
   :ensure t
-  :config (progn (add-hook 'text-mode-hook 'flyspell-mode)))
+  :config (add-hook 'text-mode-hook 'flyspell-mode))
 
 ;; Code
 (use-package flycheck :ensure t)
