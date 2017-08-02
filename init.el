@@ -119,8 +119,17 @@
                     ;; my functions
                     (-struct . 2)
                     (forever . 0)
-                    (syscall . 0)
-                    (with-process . 1)))
+                    (seq-evt . 1)
+                    ;; axon
+                    (define-process . 1)
+                    (filter . 1)
+                    (repeat . 1)
+                    (trigger . 1)
+                    (serve . 1)
+                    (async . 1)
+                    (pipe . 0)
+                    (sink . 1)
+                    (source . 1)))
 
             (mapc (lambda (f)
                     (setq hippie-expand-try-functions-list
