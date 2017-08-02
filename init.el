@@ -167,6 +167,13 @@
 
 (use-package py-autopep8 :ensure t)
 
+;; YAML
+(use-package yaml-mode
+  :ensure t
+  :config (progn
+            (add-hook 'yaml-mode-hook 'flyspell-mode-off)
+            (add-hook 'yaml-mode-hook 'flycheck-mode)))
+
 ;; Custom
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -175,7 +182,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (smex ido-hacks latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
+    (yaml-mode raml-mode smex ido-hacks latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
  '(quack-programs
    (quote
     ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi"))))
