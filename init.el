@@ -122,6 +122,7 @@
                     (seq-evt . 1)
                     ;; axon
                     (define-process . 1)
+                    (define-filter . 2)
                     (filter . 1)
                     (repeat . 1)
                     (trigger . 1)
