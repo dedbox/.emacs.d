@@ -55,8 +55,7 @@
 ;; Parentheses
 (use-package paredit
   :config (mapc (lambda (hook) (add-hook hook #'enable-paredit-mode))
-                '(prog-mode-hook
-                  eval-expression-minibuffer-setup-hook
+                '(eval-expression-minibuffer-setup-hook
                   scheme-mode-hook
                   geiser-repl-mode-hook)))
 
@@ -164,8 +163,7 @@
 ;; Python
 (use-package elpy
   :ensure t
-  :defer 2
-  :init (progn (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  :init (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
   :config (progn
             (when (require 'flycheck nil t)
               (remove-hook 'elpy-modules 'elpy-module-flymake)
@@ -173,8 +171,7 @@
               (remove-hook 'elpy-mode-hook 'elpy-module-highlight-indentation)
               (add-hook 'elpy-mode-hook 'flycheck-mode))
             (elpy-enable)
-            (setq elpy-rpc-backend "jedi")
-            (disable-paredit-mode)))
+            (setq elpy-rpc-backend "jedi")))
 
 (use-package py-autopep8 :ensure t)
 
