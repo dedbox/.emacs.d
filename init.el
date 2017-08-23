@@ -172,7 +172,8 @@
               (add-hook 'elpy-mode-hook 'flycheck-mode))
             (elpy-enable)
             (elpy-use-ipython)
-            (setq elpy-rpc-backend "jedi")))
+            (setq elpy-rpc-backend "jedi")
+            (setq elpy-rpc-timeout 1)))
 
 (use-package py-autopep8 :ensure t)
 
