@@ -171,6 +171,7 @@
               (remove-hook 'elpy-mode-hook 'elpy-module-highlight-indentation)
               (add-hook 'elpy-mode-hook 'flycheck-mode))
             (elpy-enable)
+            (elpy-use-ipython)
             (setq elpy-rpc-backend "jedi")))
 
 (use-package py-autopep8 :ensure t)
