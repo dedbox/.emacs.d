@@ -76,6 +76,8 @@
 (add-hook 'scheme-mode-hook 'flycheck-mode)
 (add-hook 'geiser-repl-mode-hook 'bind-greek-keys)
 
+(use-package scribble-mode :ensure t)
+
 (use-package quack
   :ensure t
   :config (setq quack-remap-find-file-bindings-p nil))
@@ -192,7 +194,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yaml-mode raml-mode smex ido-hacks latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
+    (scribble-mode yaml-mode raml-mode smex ido-hacks latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
  '(quack-programs
    (quote
     ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi"))))
