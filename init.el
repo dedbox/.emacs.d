@@ -35,7 +35,7 @@
 (set-frame-font
  (pcase system-name
    ("walden" "Inconsolata LGC 8")
-   (_ "Inconsolata LGC 11")))
+   (_ "Inconsolata LGC 9")))
 
 (use-package material-theme :ensure t)
 
