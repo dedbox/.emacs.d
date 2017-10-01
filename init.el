@@ -56,6 +56,7 @@
 (use-package paredit
   :config (mapc (lambda (hook) (add-hook hook #'enable-paredit-mode))
                 '(eval-expression-minibuffer-setup-hook
+                  emacs-lisp-mode-hook
                   scheme-mode-hook
                   geiser-repl-mode-hook)))
 
