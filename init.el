@@ -101,6 +101,7 @@
           ("C-c s" . "σ") ("C-c S" . "Σ")
           ("C-c F" . "Φ") ("C-c O" . "Ω")
           ("C-c E" . "∃") ("C-c A" . "∀")
+          ("C-c ;" . "ℓ")
           ("C-k" . paredit-kill))))
 
 (use-package geiser
