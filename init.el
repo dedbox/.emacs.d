@@ -44,6 +44,9 @@
   (global-unset-key [(control z)])
   (global-unset-key [(control x) (control z)]))
 
+;; Encryption
+(use-package epa-file :config (epa-file-enable))
+
 ;; Text
 (use-package flyspell
   :ensure t
@@ -124,7 +127,7 @@
                     (forever . 0)
                     (seq-evt . 1)
                     ;; axon
-                    (define-process . 1)
+                    (define-process . 2)
                     (define-filter . 2)
                     (filter . 1)
                     (repeat . 1)
