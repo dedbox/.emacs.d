@@ -128,15 +128,7 @@
                     (seq-evt . 1)
                     ;; axon
                     (define-process . 2)
-                    (define-filter . 2)
-                    (filter . 1)
-                    (repeat . 1)
-                    (trigger . 1)
-                    (serve . 1)
-                    (async . 1)
-                    (pipe . 0)
-                    (sink . 1)
-                    (source . 1)))
+                    (define-filter . 2)))
 
             (mapc (lambda (f)
                     (setq hippie-expand-try-functions-list
