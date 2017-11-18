@@ -118,18 +118,15 @@
             (mapc (lambda (x)
                     (put (car x) 'scheme-indent-function (cdr x)))
                   '((choice-evt . 0)
-                    (handle-evt . 1)
                     (let/cc . 1)
                     (replace-evt . 1)
                     (shift . 1)
                     (struct . 2)
                     ;; my functions
-                    (-struct . 2)
                     (forever . 0)
-                    (seq-evt . 1)
                     ;; axon
-                    (define-process . 2)
-                    (define-filter . 2)))
+                    (define-filter . 2)
+                    (commanded . 0)))
 
             (mapc (lambda (f)
                     (setq hippie-expand-try-functions-list
