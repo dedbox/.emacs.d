@@ -66,12 +66,13 @@
 ;; Templates
 (use-package yasnippet
   :ensure t
-  :config
-  (progn
-    (yas-reload-all)
-    (add-hook 'prog-mode-hook 'yas-minor-mode)
-    (add-hook 'geiser-repl-mode-hook 'yas-minor-mode)
-    (add-hook 'snippet-mode-hook 'flyspell-mode-off)))
+  :config (progn
+            (yas-reload-all)
+            (add-hook 'snippet-mode-hook 'flyspell-mode-off)
+            (mapc (lambda (hook) (add-hook hook #'yas-minor-mode))
+                  '(prog-mode-hook
+                    geiser-repl-mode-hook
+                    LaTeX-mode-hook))))
 
 ;; Git
 (use-package magit :ensure t)
@@ -138,26 +139,27 @@
 
 ;; Latex
 (use-package auctex
+  :defer t
   :ensure t
   :mode ("\\.tex\\'" . latex-mode)
+  :init (progn
+            (setq TeX-view-program-list '(("Zathura" "/usr/bin/zathura %o")))
+            (setq TeX-view-program-selection '((output-pdf "Zathura"))))
   :config (progn
-            (add-hook 'LaTeX-mode-hook #'turn-on-reftex)
             (setq TeX-auto-save t)
             (setq TeX-parse-self t)
-            (add-to-list 'TeX-view-program-list
-                         '(preview-pane-mode latex-preview-pane-mode))
             (setq-default TeX-master "master")))
 
 (use-package reftex
   :ensure t
-  :config (setq reftex-plug-into-AUCTeX t))
+  :config (progn
+            (setq reftex-plug-into-AUCTeX t)
+            (add-hook 'LaTeX-mode-hook #'turn-on-reftex)))
 
 (use-package bibtex
   :config (progn
             (setq bibtex-align-at-equal-sign t)
             (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
-
-(use-package latex-preview-pane :ensure t)
 
 ;; Python
 (use-package elpy
