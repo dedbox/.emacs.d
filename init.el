@@ -149,6 +149,7 @@
 
 (use-package reftex
   :ensure t
+  :bind ("C-c C-g" . reftex-goto-label))
   :config (progn
             (setq reftex-plug-into-AUCTeX t)
             (add-hook 'LaTeX-mode-hook #'turn-on-reftex)))
