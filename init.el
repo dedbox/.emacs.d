@@ -122,11 +122,9 @@
                     (replace-evt . 1)
                     (shift . 1)
                     (struct . 2)
+                    (test-case . 0)
                     ;; my functions
-                    (forever . 0)
-                    ;; axon
-                    (define-filter . 2)
-                    (commanded . 0)))
+                    (forever . 0)))
 
             (mapc (lambda (f)
                     (setq hippie-expand-try-functions-list
