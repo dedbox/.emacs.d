@@ -119,7 +119,6 @@
                     (put (car x) 'scheme-indent-function (cdr x)))
                   '((choice-evt . 0)
                     (let/cc . 1)
-                    (replace-evt . 1)
                     (shift . 1)
                     (struct . 2)
                     (test-case . 0)
