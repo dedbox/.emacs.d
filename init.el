@@ -50,7 +50,9 @@
 ;; Text
 (use-package flyspell
   :ensure t
-  :config (add-hook 'text-mode-hook 'flyspell-mode))
+  :config (mapc (lambda (hook) (add-hook hook 'flyspell-mode))
+                '(text-mode-hook
+                  scribble-mode-hook)))
 
 ;; Code
 (use-package flycheck :ensure t)
