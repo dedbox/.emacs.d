@@ -93,7 +93,7 @@
   (mapc (lambda (x) (bind-key (car x) (cdr x)))
         '(("C-c a" . "α")
           ("C-c b" . "β")
-          ("C-c g" . "γ") ("C-c Y" . "Θ")
+          ("C-c g" . "γ") ("C-c G" . "Γ")
           ("C-c d" . "δ") ("C-c D" . "Δ")
           ("C-c e" . "ε")
           ("C-c z" . "ζ")
@@ -104,11 +104,11 @@
           ("C-c p" . "π") ("C-c P" . "Π")
           ("C-c r" . "ρ")
           ("C-c f" . "φ") ("C-c F" . "Φ")
-          ("C-c X" . "Ξ")
+          ("C-c X" . "Ξ") ("C-c Y" . "Θ")
           ("C-c s" . "σ") ("C-c S" . "Σ")
           ("C-c F" . "Φ") ("C-c O" . "Ω")
           ("C-c E" . "∃") ("C-c A" . "∀")
-          ("C-c ;" . "ℓ")
+          ("C-c ;" . "ℓ") ("C-c :" . "◊")
           ("C-k" . paredit-kill))))
 
 (use-package geiser
@@ -119,11 +119,11 @@
 
             (mapc (lambda (x)
                     (put (car x) 'scheme-indent-function (cdr x)))
-                  '((choice-evt . 0)
-                    (let/cc . 1)
+                  '((let/cc . 1)
                     (shift . 1)
                     (struct . 2)
                     (test-case . 0)
+                    (do . 0)
                     ;; my functions
                     (forever . 0)))
 
