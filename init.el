@@ -69,7 +69,12 @@
   :config (global-company-mode))
 
 ;; org-mode
-(use-package org :ensure t)
+(use-package visual-fill-column :ensure t)
+(use-package org
+  :ensure t
+  :config (progn
+            (add-hook 'org-mode-hook 'visual-line-mode)
+            (add-hook 'org-mode-hook 'visual-fill-column-mode)))
 
 ;; racket
 (use-package racket-mode
@@ -218,15 +223,10 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (pollen-mode scribble-mode yaml-mode raml-mode smex ido-hacks latex-preview-pane-mode auctex quack geiser racket-mode py-autopep8 rainbow-delimiters material-theme better-defaults magit use-package)))
- '(quack-programs
-   (quote
-    ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi"))))
+    (visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-
- ;'(default ((t (:background "#1f292e"))))
  )
