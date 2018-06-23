@@ -37,6 +37,7 @@
 (set-frame-font
  (pcase system-name
    ("walden" "Inconsolata LGC 8")
+   ("wubbzy" "Roboto Mono 12")
    (_ "InputMono:size=14")))
 
 ;; theme
