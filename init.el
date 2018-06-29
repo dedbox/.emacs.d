@@ -75,7 +75,9 @@
   :ensure t
   :config (progn
             (add-hook 'org-mode-hook 'visual-line-mode)
-            (add-hook 'org-mode-hook 'visual-fill-column-mode)))
+            (add-hook 'org-mode-hook 'visual-fill-column-mode)
+            (setq org-log-done 'time)
+            (setq fill-column 70)))
 
 ;; racket
 (use-package racket-mode
