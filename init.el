@@ -74,6 +74,7 @@
 
 ;; org-mode
 (use-package visual-fill-column :ensure t)
+(use-package htmlize :ensure t)
 (use-package org
   :ensure t
   :config (progn
