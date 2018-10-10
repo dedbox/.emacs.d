@@ -38,6 +38,7 @@
  (pcase system-name
    ("walden" "Inconsolata LGC 8")
    ("wubbzy" "Roboto Mono 12")
+   ("zim" "Roboto Mono 10")
    (_ "InputMono:size=14")))
 
 ;; theme
