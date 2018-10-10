@@ -182,30 +182,31 @@
 ;; ;; Pollen
 ;; (use-package pollen-mode :ensure t)
 
-;; ;; Latex
-;; (use-package auctex
-;;   :defer t
-;;   :ensure t
-;;   :mode ("\\.tex\\'" . latex-mode)
-;;   :init (progn
-;;             (setq TeX-view-program-list '(("Zathura" "/usr/bin/zathura %o")))
-;;             (setq TeX-view-program-selection '((output-pdf "Zathura"))))
-;;   :config (progn
-;;             (setq TeX-auto-save t)
-;;             (setq TeX-parse-self t)
-;;             (setq-default TeX-master "master")))
+;; Latex
+(use-package auctex
+  :defer t
+  :ensure t
+  :mode ("\\.tex\\'" . latex-mode)
+  :init (progn
+            (setq TeX-view-program-list '(("Zathura" "/usr/bin/zathura %o")))
+            (setq TeX-view-program-selection '((output-pdf "Zathura"))))
+  :config (progn
+            (setq TeX-auto-save t)
+            (setq TeX-parse-self t)
+            (setq-default TeX-master "master")
+            (reftex-mode)))
 
-;; (use-package reftex
-;;   :ensure t
-;;   :bind ("C-c C-g" . reftex-goto-label)
-;;   :config (progn
-;;             (setq reftex-plug-into-AUCTeX t)
-;;             (add-hook 'LaTeX-mode-hook #'turn-on-reftex)))
+(use-package reftex
+  :ensure t
+  :bind ("C-c C-g" . reftex-goto-label)
+  :config (progn
+            (setq reftex-plug-into-AUCTeX t)
+            (add-hook 'LaTeX-mode-hook #'turn-on-reftex)))
 
-;; (use-package bibtex
-;;   :config (progn
-;;             (setq bibtex-align-at-equal-sign t)
-;;             (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
+(use-package bibtex
+  :config (progn
+            (setq bibtex-align-at-equal-sign t)
+            (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
 
 ;; ;; Python
 ;; (use-package elpy
