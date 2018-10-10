@@ -239,7 +239,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
+    (htmlize visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
