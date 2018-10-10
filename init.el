@@ -27,6 +27,8 @@
 (setq-default x-stretch-cursor t)
 (setq-default fill-column 78)
 (setq browse-url-browser-function 'browse-url-chromium)
+(setq split-height-threshold nil)
+(setq split-width-threshold 160)
 
 ;; unbind C-Z in GUI
 (when (display-graphic-p)
