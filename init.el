@@ -41,7 +41,8 @@
    ("walden" "Inconsolata LGC 8")
    ("wubbzy" "Roboto Mono 12")
    ("zim" "Roboto Mono 10")
-   (_ "InputMono:size=14")))
+   (_ "InputMono:size=14"))
+ nil t)
 
 ;; theme
 (use-package material-theme :ensure t)
@@ -51,8 +52,8 @@
   :config (setq uniquify-buffer-name-style 'post-forward))
 
 ;; ido
-(use-package ido :ensure t :config (ido-mode t))
-(use-package ido-hacks :ensure t)
+;; (use-package ido :ensure t :config (ido-mode t))
+;; (use-package ido-hacks :ensure t)
 
 ;; smex
 (use-package smex
@@ -68,9 +69,9 @@
 ;;   :config (global-flycheck-mode))
 
 ;; company
-(use-package company
-  :ensure t
-  :config (global-company-mode))
+;; (use-package company
+;;   :ensure t
+;;   :config (global-company-mode))
 
 ;; org-mode
 (use-package visual-fill-column :ensure t)
@@ -109,12 +110,24 @@
                ("C-c E" . "∃") ("C-c A" . "∀")
                ("C-c ;" . "ℓ") ("C-c :" . "◊")
                ("C-k" . paredit-kill)))
-            (put 'type 'racket-indent-function 1)
-            (put 'data 'racket-indent-function 1)
+            (put 'syntax/loc/props 'racket-indent-function 1)
+            (put 'property 'racket-indent-function 1)
+            (put 'data 'racket-indent-function 0)
+            ;; (put 'do 'racket-indent-function 'defun)
+            (put 'φ 'racket-indent-function 1)
+            (put 'phi 'racket-indent-function 1)
             (put 'function 'racket-indent-function 0)
-            (put 'var 'racket-indent-function 3)
-            (put 'cases 'racket-indent-function 1)
-            (put 'do 'racket-indent-function 'defun)))
+            (put 'φ* 'racket-indent-function 1)
+            (put 'phi* 'racket-indent-function 1)
+            (put 'function* 'racket-indent-function 0)
+            (put 'μ 'racket-indent-function 1)
+            (put 'mu 'racket-indent-function 1)
+            (put 'macro 'racket-indent-function 0)
+            (put 'μ* 'racket-indent-function 1)
+            (put 'mu* 'racket-indent-function 1)
+            (put 'macro* 'racket-indent-function 0)
+            (put 'let-data 'racket-indent-function 1)
+            (put 'instance 'racket-indent-function 1)))
 
 ;; scribble
 (use-package scribble-mode :ensure t)
@@ -141,44 +154,6 @@
 ;; ;; Encryption
 ;; (use-package epa-file :config (epa-file-enable))
 
-;; ;; Text
-;; (use-package flyspell
-;;   :ensure t
-;;   :config (mapc (lambda (hook) (add-hook hook 'flyspell-mode))
-;;                 '(text-mode-hook
-;;                   scribble-mode-hook)))
-
-;; (add-hook 'scheme-mode-hook 'flycheck-mode)
-;; (add-hook 'geiser-repl-mode-hook 'bind-greek-keys)
-
-;; (use-package quack
-;;   :config (setq quack-remap-find-file-bindings-p nil))
-
-;; (use-package geiser
-;;   :ensure t
-;;   :config (progn
-;;             (bind-greek-keys)
-;;             ;; (add-hook 'geiser-repl-mode 'bind-greek-keys)
-
-;;             (mapc (lambda (x)
-;;                     (put (car x) 'scheme-indent-function (cdr x)))
-;;                   '((let/cc . 1)
-;;                     (shift . 1)
-;;                     (struct . 2)
-;;                     (test-case . 0)
-;;                     (do . 0)
-;;                     ;; my functions
-;;                     (forever . 0)
-;;                     (event-let . 1)
-;;                     (event-let* . 1)
-;;                     (event-letrec . 1)))
-
-;;             (mapc (lambda (f)
-;;                     (setq hippie-expand-try-functions-list
-;;                           (remq f hippie-expand-try-functions-list)))
-;;                   '(try-expand-line
-;;                     try-expand-list))))
-
 ;; ;; Pollen
 ;; (use-package pollen-mode :ensure t)
 
@@ -193,8 +168,7 @@
   :config (progn
             (setq TeX-auto-save t)
             (setq TeX-parse-self t)
-            (setq-default TeX-master "master")
-            (reftex-mode)))
+            (setq-default TeX-master "master")))
 
 (use-package reftex
   :ensure t
