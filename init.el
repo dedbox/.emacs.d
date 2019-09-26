@@ -85,6 +85,11 @@
             (setq org-log-done 'time)
             (setq fill-column 70)))
 
+;; Enable Racket in Org-mode Babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((racket . t)))
+
 ;; racket
 (use-package racket-mode
   :ensure t
@@ -111,10 +116,16 @@
                ("C-c E" . "∃") ("C-c A" . "∀")
                ("C-c ;" . "ℓ") ("C-c :" . "◊")
                ("C-k" . paredit-kill)))
+            (put 'set! 'racket-indent-function 'defun)
+            (put 'set-field! 'racket-indent-function 2)
+            (put 'for/foldr 'racket-indent-function 'racket--indent-for/fold)
+            (put 'struct-copy 'racket-indent-function 2)
+            (put 'place 'racket-indent-function 1)
             (put 'syntax/loc/props 'racket-indent-function 1)
             (put 'property 'racket-indent-function 1)
             (put 'data 'racket-indent-function 0)
-            ;; (put 'do 'racket-indent-function 'defun)
+            (put 'do 'racket-indent-function 0)
+            (put 'do~ 'racket-indent-function 0)
             (put 'φ 'racket-indent-function 1)
             (put 'phi 'racket-indent-function 1)
             (put 'function 'racket-indent-function 0)
@@ -128,7 +139,32 @@
             (put 'mu* 'racket-indent-function 1)
             (put 'macro* 'racket-indent-function 0)
             (put 'let-data 'racket-indent-function 1)
-            (put 'instance 'racket-indent-function 1)))
+            (put 'instance 'racket-indent-function 2)
+            (put 'with-instance 'racket-indent-function 1)
+            (put 'with-instances 'racket-indent-function 1)
+            (put 'splicing-with-instance 'racket-indent-function 1)
+            (put 'splicing-with-instances 'racket-indent-function 1)
+            (put 'case-λ 'racket-indent-function 1)
+            (put 'case-values 'racket-indent-function 1)
+            (put 'algebraic-λ 'racket-indent-function 1)
+            (put 'algebraic-lambda 'racket-indent-function 1)
+            (put 'algebraic-case-λ 'racket-indent-function 0)
+            (put 'algebraic-case-lambda 'racket-indent-function 0)
+            (put 'algebraic-let 'racket-indent-function 'racket--indent-maybe-named-let)
+            (put 'algebraic-let* 'racket-indent-function 1)
+            (put 'algebraic-letrec 'racket-indent-function 1)
+            (put 'algebraic-let-values 'racket-indent-function 1)
+            (put 'algebraic-let*-values 'racket-indent-function 1)
+            (put 'algebraic-letrec-values 'racket-indent-function 1)
+            (put 'algebraic-case 'racket-indent-function 1)
+            (put 'algebraic-case-values 'racket-indent-function 1)
+            (put 'algebraic-define 'racket-indent-function 'defun)
+            (put 'lazy-do 'racket-indent-function 0)
+            (put 'truthy-do 'racket-indent-function 0)
+            (put (intern "#%rewrite") 'racket-indent-function 1)
+            (put 'newtype 'racket-indent-function 1)
+            (put 'let-instance 'racket-indent-function 2)
+            (put 'GL> 'racket-indent-function 1)))
 
 ;; scribble
 (use-package scribble-mode :ensure t)
@@ -139,6 +175,9 @@
             (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
             (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
             (add-hook 'racket-mode-hook #'enable-paredit-mode)))
+
+;; haskell
+(use-package haskell-mode :ensure t)
 
 ;; templates
 (use-package yasnippet
@@ -151,6 +190,8 @@
 
 ;; git
 (use-package magit :ensure t)
+
+(use-package forge :ensure t :after magit)
 
 ;; ;; Encryption
 ;; (use-package epa-file :config (epa-file-enable))
@@ -212,9 +253,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" default)))
  '(package-selected-packages
    (quote
-    (htmlize visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
+    (edit-indirect forge htmlize visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
