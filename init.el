@@ -38,8 +38,8 @@
 ;; fonts
 (set-frame-font
  (pcase system-name
-   ;; ("walden" "Inconsolata LGC 8")
-   ("walden" "Roboto Mono 9")
+   ;; ("walden" "Roboto Mono 9")
+   ("walden" "Roboto Mono 11")
    ("wubbzy" "Roboto Mono 12")
    ("zim" "Roboto Mono 10")
    (_ "InputMono:size=14"))
@@ -164,7 +164,9 @@
             (put (intern "#%rewrite") 'racket-indent-function 1)
             (put 'newtype 'racket-indent-function 1)
             (put 'let-instance 'racket-indent-function 2)
-            (put 'GL> 'racket-indent-function 1)))
+            (put 'GL> 'racket-indent-function 0)
+            (put 'GL>> 'racket-indent-function 0)
+            (put 'maybe-parameterize 'racket-indent-function 1)))
 
 ;; scribble
 (use-package scribble-mode :ensure t)
