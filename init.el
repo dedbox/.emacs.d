@@ -64,6 +64,12 @@
          ("C-c C-c M-x" . execute-extended-command))
   :config (smex-initialize))
 
+;; folding
+(use-package origami
+  :ensure t
+  :bind (("C-z C-z" . origami-toggle-node)
+         ("C-z C-a" . origami-toggle-all-nodes)))
+
 ;; flycheck
 ;; (use-package flycheck
 ;;   :ensure t
@@ -226,6 +232,11 @@
             (setq bibtex-align-at-equal-sign t)
             (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
 
+;; C++
+(use-package modern-cpp-font-lock
+  :ensure t
+  :config (add-hook 'c++-mode-hook 'origami-mode))
+
 ;; ;; Python
 ;; (use-package elpy
 ;;   :ensure t
@@ -260,7 +271,7 @@
     ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" default)))
  '(package-selected-packages
    (quote
-    (edit-indirect forge htmlize visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
+    (origami modern-cpp-font-lock edit-indirect forge htmlize visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
