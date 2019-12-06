@@ -38,8 +38,7 @@
 ;; fonts
 (set-frame-font
  (pcase system-name
-   ;; ("walden" "Roboto Mono 9")
-   ("walden" "Roboto Mono 11")
+   ("walden" "Roboto Mono 9")
    ("wubbzy" "Roboto Mono 12")
    ("zim" "Roboto Mono 10")
    (_ "InputMono:size=14"))
