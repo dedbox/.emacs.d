@@ -68,7 +68,8 @@
 (use-package origami
   :ensure t
   :bind (("C-z C-z" . origami-toggle-node)
-         ("C-z C-a" . origami-toggle-all-nodes)))
+         ("C-z C-a" . origami-toggle-all-nodes))
+  :config (add-hook 'c++-mode-hook 'origami-mode))
 
 ;; flycheck
 ;; (use-package flycheck
@@ -235,7 +236,7 @@
 ;; C++
 (use-package modern-cpp-font-lock
   :ensure t
-  :config (add-hook 'c++-mode-hook 'origami-mode))
+  :config (add-hook 'c++-mode-hook 'modern-c++-font-lock-mode))
 
 ;; ;; Python
 ;; (use-package elpy
@@ -271,7 +272,7 @@
     ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" default)))
  '(package-selected-packages
    (quote
-    (origami modern-cpp-font-lock edit-indirect forge htmlize visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
+    (modern-cpp-font-lock origami edit-indirect forge htmlize visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
