@@ -89,7 +89,9 @@
             (add-hook 'org-mode-hook 'visual-line-mode)
             (add-hook 'org-mode-hook 'visual-fill-column-mode)
             (setq org-log-done 'time)
-            (setq fill-column 70)))
+            (setq fill-column 80)
+            (setq org-format-latex-options
+                  (plist-put org-format-latex-options :scale 1.325))))
 
 ;; Enable Racket in Org-mode Babel
 (org-babel-do-load-languages
