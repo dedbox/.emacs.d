@@ -35,6 +35,10 @@
   (global-unset-key [(control z)])
   (global-unset-key [(control x) (control z)]))
 
+;; disable overwrite mode
+(global-unset-key [(insert)])
+(overwrite-mode -1)
+
 ;; fonts
 (set-frame-font
  (pcase system-name
