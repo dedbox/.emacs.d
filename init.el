@@ -275,7 +275,9 @@
 ;; ReasonML
 (use-package reason-mode
   :ensure t
-  :config (merlin-mode))
+  :config
+  (add-hook 'before-save-hook 'refmt-before-save)
+  (merlin-mode))
 
 ;; Merlin
 (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
