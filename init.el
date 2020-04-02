@@ -272,6 +272,20 @@
             (setq bibtex-align-at-equal-sign t)
             (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
 
+;; ReasonML
+(use-package reason-mode
+  :ensure t
+  :config (merlin-mode))
+
+;; Merlin
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+  (when (and opam-share (file-directory-p opam-share))
+    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+    (autoload 'merlin-mode "merlin" nil t nil)
+    (add-hook 'tuareg-mode-hook 'merlin-mode t)
+    (add-hook 'caml-mode-hook 'merlin-mode t)
+    (setq merlin-command 'opam)))
+
 ;; C++
 (use-package modern-cpp-font-lock
   :ensure t
