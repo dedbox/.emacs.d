@@ -286,7 +286,7 @@
                     (display-buffer "*shell*")
                     (comint-send-string
                      "*shell*"
-                     "bsb -make-world && node src/Demo.bs.js\n")))
+                     "bsb -make-world && node src/main.bs.js\n")))
   :config
   (add-hook 'before-save-hook 'refmt-before-save))
 
