@@ -288,8 +288,7 @@
                      "*shell*"
                      "bsb -make-world && node src/Demo.bs.js\n")))
   :config
-  (add-hook 'before-save-hook 'refmt-before-save)
-  (merlin-mode))
+  (add-hook 'before-save-hook 'refmt-before-save))
 
 ;; Merlin
 (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
