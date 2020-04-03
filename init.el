@@ -275,6 +275,18 @@
 ;; ReasonML
 (use-package reason-mode
   :ensure t
+  :bind ("C-c C-c" . (lambda ()
+                       (interactive)
+                       (save-buffer)
+                       (display-buffer "*shell*")
+                       (comint-send-string "*shell*" "bsb -make-world\n")))
+  :bind ("<f5>" . (lambda ()
+                    (interactive)
+                    (save-buffer)
+                    (display-buffer "*shell*")
+                    (comint-send-string
+                     "*shell*"
+                     "bsb -make-world && node src/Demo.bs.js\n")))
   :config
   (add-hook 'before-save-hook 'refmt-before-save)
   (merlin-mode))
