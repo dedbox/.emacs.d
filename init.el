@@ -128,6 +128,8 @@
                ("C-c +" . "⊕") ("C-c -" . "⊖")
                ("C-c *" . "⊗") ("C-c /" . "⊘")
                ("C-c ." . "⊙") ("C-c =" . "≗")
+               ("C-c >" . "→") ("C-c C-x >" . "⇒")
+               ("C-c |" . "⊢") ("C-c C-x |" . "⊧")
                ("C-k" . paredit-kill)))
             (put 'set! 'racket-indent-function 'defun)
             (put 'set-field! 'racket-indent-function 2)
