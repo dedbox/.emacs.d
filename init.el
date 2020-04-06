@@ -162,7 +162,7 @@
             (put 'with-instances 'racket-indent-function 1)
             (put 'splicing-with-instance 'racket-indent-function 1)
             (put 'splicing-with-instances 'racket-indent-function 1)
-            (put 'case-λ 'racket-indent-function 1)
+            (put 'case-λ 'racket-indent-function 0)
             (put 'case-values 'racket-indent-function 1)
             (put 'algebraic-λ 'racket-indent-function 1)
             (put 'algebraic-lambda 'racket-indent-function 1)
