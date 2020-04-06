@@ -274,7 +274,7 @@
             (setq bibtex-align-at-equal-sign t)
             (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
 
-;; ReasonML
+;; Reason
 (use-package reason-mode
   :ensure t
   :bind ("C-c C-c" . (lambda ()
@@ -291,6 +291,11 @@
                      "bsb -make-world && node src/main.bs.js\n")))
   :config
   (add-hook 'before-save-hook 'refmt-before-save))
+
+;;; dune
+(load "~/.opam/4.09.1/share/emacs/site-lisp/dune.el")
+(add-to-list 'auto-mode-alist '("/dune\\'" . dune-mode))
+
 
 ;; C++
 (use-package modern-cpp-font-lock
