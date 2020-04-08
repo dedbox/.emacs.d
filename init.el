@@ -274,28 +274,35 @@
             (setq bibtex-align-at-equal-sign t)
             (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
 
+;;; utop
+(autoload 'utop "utop" "Toplevel for OCaml" t)
+(setq utop-command "rtop -emacs")
+
 ;; Reason
 (use-package reason-mode
   :ensure t
   :bind ("C-c C-c" . (lambda ()
                        (interactive)
                        (save-buffer)
-                       (display-buffer "*shell*")
-                       (comint-send-string "*shell*" "bsb -make-world\n")))
-  :bind ("<f5>" . (lambda ()
-                    (interactive)
-                    (save-buffer)
-                    (display-buffer "*shell*")
-                    (comint-send-string
-                     "*shell*"
-                     "bsb -make-world && node src/main.bs.js\n")))
+                       (setq already-started (get-buffer "*utop*"))
+                       (setq utop-command
+                             (concat "rtop -emacs -init "
+                                     (file-name-nondirectory buffer-file-name)))
+                       (when (and already-started (get-buffer-process "*utop*"))
+                         (utop-kill))
+                       (if already-started
+                           (progn (pop-to-buffer already-started) (utop-restart))
+                         (utop))))
   :config
-  (add-hook 'before-save-hook 'refmt-before-save))
+  (add-hook 'reason-mode-hook
+            (lambda () (add-hook 'before-save-hook #'refmt-before-save))))
 
 ;;; dune
 (load "~/.opam/4.09.1/share/emacs/site-lisp/dune.el")
 (add-to-list 'auto-mode-alist '("/dune\\'" . dune-mode))
 
+;;; OCaml
+(load "~/.opam/4.09.1/share/emacs/site-lisp/tuareg-site-file")
 
 ;; C++
 (use-package modern-cpp-font-lock
