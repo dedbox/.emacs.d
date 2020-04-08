@@ -282,28 +282,35 @@
 ;; Reason
 (use-package reason-mode
   :ensure t
-  :bind ("C-c C-c" . (lambda ()
-                       (interactive)
-                       (save-buffer)
-                       (setq already-started (get-buffer "*utop*"))
-                       (setq utop-command
-                             (concat "rtop -emacs -init "
-                                     (file-name-nondirectory buffer-file-name)))
-                       (when (and already-started (get-buffer-process "*utop*"))
-                         (utop-kill))
-                       (if already-started
-                           (progn (pop-to-buffer already-started) (utop-restart))
-                         (utop))))
+  :bind (("C-c C-c" . (lambda ()
+                        (interactive)
+                        (save-buffer)
+                        (setq already-started (get-buffer "*utop*"))
+                        (setq utop-command
+                              (concat "rtop -emacs -init "
+                                      (file-name-nondirectory buffer-file-name)))
+                        (when (and already-started (get-buffer-process "*utop*"))
+                          (utop-kill))
+                        (if already-started
+                            (progn (pop-to-buffer already-started) (utop-restart))
+                          (utop))))
+         ("<f5>" . (lambda ()
+                     (interactive)
+                     (save-buffer)
+                     (display-buffer "*shell*")
+                     (comint-send-string
+                      "*shell*" "echo; dune build && node _build/default/main.bc.js\n"))))
+
   :config
   (add-hook 'reason-mode-hook
             (lambda () (add-hook 'before-save-hook #'refmt-before-save))))
 
 ;;; dune
-(load "~/.opam/4.09.1/share/emacs/site-lisp/dune.el")
+(load "~/.opam/default/share/emacs/site-lisp/dune.el")
 (add-to-list 'auto-mode-alist '("/dune\\'" . dune-mode))
 
 ;;; OCaml
-(load "~/.opam/4.09.1/share/emacs/site-lisp/tuareg-site-file")
+(load "~/.opam/default/share/emacs/site-lisp/tuareg-site-file")
 
 ;; C++
 (use-package modern-cpp-font-lock
