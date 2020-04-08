@@ -216,7 +216,8 @@
   :config (progn
             (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
             (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-            (add-hook 'racket-mode-hook #'enable-paredit-mode)))
+            (add-hook 'racket-mode-hook #'enable-paredit-mode)
+            (add-hook 'dune-mode-hook #'enable-paredit-mode)))
 
 ;; haskell
 (use-package haskell-mode :ensure t)
