@@ -299,7 +299,21 @@
                      (save-buffer)
                      (display-buffer "*shell*")
                      (comint-send-string
-                      "*shell*" "echo; dune build && node _build/default/main.bc.js\n"))))
+                      "*shell*"
+                      (concat "echo; dune build && dune exec ./"
+                              (file-name-sans-extension
+                               (file-name-nondirectory buffer-file-name))
+                              ".exe\n"))))
+         ("<F5>" . (lambda ()
+                     (interactive)
+                     (save-buffer)
+                     (display-buffer "*shell*")
+                     (comint-send-string
+                      "*shell*"
+                      (concat "echo; dune build && node _build/default/"
+                              (file-name-sans-extension
+                               (file-name-nondirectory buffer-file-name))
+                              ".bc.js\n")))))
 
   :config
   (add-hook 'reason-mode-hook
