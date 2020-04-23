@@ -84,6 +84,9 @@
 ;;   :ensure t
 ;;   :config (global-company-mode))
 
+;; auto-complete
+(use-package auto-complete :ensure t)
+
 ;; org-mode
 (use-package visual-fill-column :ensure t)
 (use-package htmlize :ensure t)
