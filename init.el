@@ -278,9 +278,28 @@
             (setq bibtex-align-at-equal-sign t)
             (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120)))))
 
+;;; dune
+(load "~/.opam/default/share/emacs/site-lisp/dune.el")
+(add-to-list 'auto-mode-alist '("/dune\\'" . dune-mode))
+
 ;;; utop
 (autoload 'utop "utop" "Toplevel for OCaml" t)
 (setq utop-command "rtop -emacs")
+
+;;; Ocaml
+(add-to-list 'load-path "~/.opam/default/share/emacs/site-lisp")
+(use-package tuareg
+  :ensure t
+  :config
+  (setq auto-mode-alist (append '(("\\.ml[ily]?$" . tuareg-mode)) auto-mode-alist))
+  (autoload 'utop "utop" "Toplevel for OCaml" t)
+  (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
+  (require 'ocamlformat)
+  :init
+  (setq utop-command "opam config exec -- dune utop . -- -emacs")
+  :hook ((tuareg-mode . utop-minor-mode)
+         (tuareg-mode . auto-complete-mode)
+         (before-save . ocamlformat-before-save)))
 
 ;; Reason
 (use-package reason-mode
@@ -322,14 +341,7 @@
   (add-hook 'reason-mode-hook
             (lambda () (add-hook 'before-save-hook #'refmt-before-save))))
 
-;;; dune
-(load "~/.opam/default/share/emacs/site-lisp/dune.el")
-(add-to-list 'auto-mode-alist '("/dune\\'" . dune-mode))
-
-;;; OCaml
-(load "~/.opam/default/share/emacs/site-lisp/tuareg-site-file")
-
-;; C++
+;; c++
 (use-package modern-cpp-font-lock
   :ensure t
   :config (add-hook 'c++-mode-hook 'modern-c++-font-lock-mode))
@@ -366,6 +378,9 @@
  '(custom-safe-themes
    (quote
     ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" default)))
+ '(ocamlformat-command "ocamlformat")
+ '(ocamlformat-enable (quote enable-outside-detected-project))
+ '(ocamlformat-show-errors (quote buffer))
  '(package-selected-packages
    (quote
     (modern-cpp-font-lock origami edit-indirect forge htmlize visual-fill-column haskell-mode org id yaml-mode use-package smex scribble-mode racket-mode py-autopep8 pollen-mode material-theme magit ido-hacks geiser elpy better-defaults auctex))))
